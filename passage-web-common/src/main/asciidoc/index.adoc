@@ -1,0 +1,58 @@
+= Web Common Service: Getting Started Guide
+@author;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[overview]]
+= Overview
+
+[[overview-http-verbs]]
+== HTTP verbs
+TaskList-service tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+|===
+
+[[resources]]
+= Resources
+
+[[resource-test-controller-advice]]
+=== TestControllerAdvice
+A `GET` request which is created to test WebServiceControllerAdvice
+
+==== Request Parameters
+
+include::{snippets}/test-controller-advice/request-parameters.adoc[]
+
+==== Example request
+
+include::{snippets}/test-controller-advice/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/test-controller-advice/http-response.adoc[]
+
+[[resource-test-controller-advice]]
+=== TestException
+A `GET` request which is created to test WebServiceControllerAdvice
+
+==== Request Parameters
+
+include::{snippets}/test-exception/request-parameters.adoc[]
+
+==== Example request
+
+include::{snippets}/test-exception/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/test-exception/http-response.adoc[]

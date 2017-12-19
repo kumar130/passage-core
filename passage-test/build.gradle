@@ -1,0 +1,46 @@
+apply plugin: "io.spring.dependency-management"
+apply plugin: 'java'
+apply plugin: 'maven'
+
+description = """passage-test"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenLocal()
+}
+
+dependencyManagement {
+	imports {
+		mavenBom 'com.nm.passage:passage-service-starter-parent:1.0.0'
+	}
+}
+
+dependencies {
+    compile 'org.springframework:spring-core'
+    compile 'org.springframework:spring-web'
+    compile 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    compile 'com.github.tomakehurst:wiremock:2.0.8-beta'
+	compile 'commons-logging:commons-logging:1.2'
+    testCompile 'junit:junit'
+    testCompile 'org.mockito:mockito-core'
+}
+
+test {
+	exclude 'com/nm/test/RestApi.class'
+}
+
+//packaging tests
+task jarTest(type: Jar) {
+	from sourceSets.test.output
+  	classifier = 'tests'
+}
+
+configurations {
+	spi.extendsFrom (testCompile)
+}
+
+artifacts {
+	spi jarTest
+}

@@ -1,0 +1,49 @@
+<configuration>
+    <property resource="logback-variables.properties"/>
+    <property scope="system" name="IS_CLOUD" value="${OPENSHIFT_BUILD_REFERENCE:-no}"/>
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+    <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <fieldName>timestamp</fieldName>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>${json.logstash.pattern}</pattern>
+                </pattern>
+                <stackTrace>
+                    <fieldName>ex</fieldName>
+                    <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                        <maxDepthPerThrowable>20</maxDepthPerThrowable>
+                        <maxLength>1000</maxLength>
+                        <shortenedClassNameLength>30</shortenedClassNameLength>
+                        <rootCauseFirst>true</rootCauseFirst>
+                    </throwableConverter>
+                </stackTrace>
+            </providers>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${standard.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <if condition='p("IS_CLOUD").equals("no")'>
+        <then>
+            <root level="INFO">
+                <appender-ref ref="STDOUT"/>
+            </root>
+        </then>
+        <else>
+            <root level="INFO">
+                <appender-ref ref="JSON"/>
+            </root>
+        </else>
+    </if>
+    
+
+</configuration>

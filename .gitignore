@@ -1,0 +1,35 @@
+*.iml
+*.ipr
+*.iws
+.idea
+.settings
+.classpath
+.project
+*.log
+*.log.zip
+bower_components
+node_modules
+typings
+dist
+.sass-cache
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+!**/wrapper/gradle-wrapper.jar
+
+# Maven build target directory
+target/
+# Maven plugin generated temporary directory
+overlays
+webapp
+
+# any IDE specific configuration
+.idea/*
+.gradle/
+build/
+out/
+.shelf/

@@ -1,0 +1,37 @@
+apply plugin: "io.spring.dependency-management"
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+description = """passage-keycloak-security"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenLocal()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'com.nm.passage:passage-service-starter-parent:1.0.0'
+    }
+    dependencies {
+        dependencySet(group:'org.springframework.security', version: '4.2.3.RELEASE') {
+             entry 'spring-security-web'
+             entry 'spring-security-core'
+             entry 'spring-security-config'
+             entry 'spring-security-crypto'
+        }
+   }
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-security:1.5.4.RELEASE'
+    compile 'org.keycloak:keycloak-authz-client:2.5.1.Final'
+    compile 'org.keycloak:keycloak-spring-security-adapter:2.5.1.Final'
+    compile 'org.springframework.security:spring-security-web:4.2.3.RELEASE'
+    compile 'org.springframework.security:spring-security-core:4.2.3.RELEASE'
+    compile 'org.springframework.security:spring-security-config:4.2.3.RELEASE'
+    compile 'org.springframework.security:spring-security-crypto:4.2.3.RELEASE'
+}

@@ -1,0 +1,46 @@
+apply plugin: "io.spring.dependency-management"
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+description = """passage-logging"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenLocal()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'com.nm.passage:passage-service-starter-parent:1.0.0'
+    }
+    dependencies {
+        dependencySet(group:'org.springframework.security', version: '4.2.3.RELEASE') {
+             entry 'spring-security-web'
+             entry 'spring-security-core'
+             entry 'spring-security-config'
+             entry 'spring-security-crypto'
+        }
+   }
+}
+
+dependencies {
+	compile 'ch.qos.logback:logback-access'
+	compile 'ch.qos.logback:logback-classic'
+	compile 'org.codehaus.janino:janino:3.0.7'
+    compile 'com.nm.passage.fasterxml.jackson.core:jackson-databind:2.8.8.1'
+	compile 'javax.inject:javax.inject:1'
+	compile 'net.logstash.logback:logstash-logback-encoder:4.9'
+	compile 'org.aspectj:aspectjweaver'
+	compile 'org.springframework.boot:spring-boot-starter-web:1.5.4.RELEASE'
+	compile 'org.springframework.cloud:spring-cloud-starter-sleuth:1.2.0.RELEASE'
+	compile 'org.springframework.security:spring-security-web:4.2.3.RELEASE'
+    compile 'org.springframework.security:spring-security-core:4.2.3.RELEASE'
+    compile 'org.springframework.security:spring-security-config:4.2.3.RELEASE'
+    compile 'org.springframework.security:spring-security-crypto:4.2.3.RELEASE'
+    testCompile 'junit:junit'
+    testCompile 'org.mockito:mockito-core'
+
+}

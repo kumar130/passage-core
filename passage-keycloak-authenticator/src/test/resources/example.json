@@ -1,0 +1,8 @@
+{
+  "realm": "efiles",
+  "auth-server-url": "${test.me.now}",
+  "resource": "data-transport-gateway",
+  "credentials": {
+    "secret": "fcb752b9-21b7-47ef-942f-b740af7c7fef"
+  }
+}

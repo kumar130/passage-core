@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.nm.passage</groupId>
+    <artifactId>passage-core</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <name>passage-core</name>
+    <description>Passage Core Projects</description>
+
+    <modules>
+      <module>passage-discovery</module>
+      <module>passage-logging</module>
+      <module>passage-test</module>
+      <module>passage-web-common</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

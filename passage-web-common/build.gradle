@@ -1,0 +1,41 @@
+apply plugin: "io.spring.dependency-management"
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+description = """passage-web-common"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenLocal ()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'com.nm.passage:passage-service-starter-parent:1.0.0'
+    }
+    dependencies {
+        dependencySet(group:'org.springframework.security', version: '4.2.3.RELEASE') {
+             entry 'spring-security-web'
+             entry 'spring-security-core'
+             entry 'spring-security-config'
+             entry 'spring-security-crypto'
+        }
+   }
+}
+
+dependencies {
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
+    compile group: 'com.sun.jersey.contribs', name: 'jersey-apache-client4'
+    compile group: 'com.sun.jersey', name: 'jersey-json'
+    compile 'com.nm.passage.fasterxml.jackson.core:jackson-databind:2.8.8.1'
+    compile group: 'io.dropwizard.metrics', name: 'metrics-core'
+    compile 'org.springframework.security:spring-security-core:4.2.3.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-actuator:1.5.4.RELEASE'
+    compile project (path: ':passage-logging')
+    compile group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.4.RELEASE'
+    testCompile project(path: ':passage-test', configuration: 'spi')
+}

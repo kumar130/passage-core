@@ -8,7 +8,7 @@ String branchName = ''
 node('master'){
 nodeName = 'master'
      
-      stage 'Checkout': {
+      stage 'Checkout' 
                 node(nodeName){
             	    stage('Checkout'){
                         checkOut( gitCredentials: gitCredentials)
@@ -18,8 +18,8 @@ nodeName = 'master'
                         echo "Working off branch: ${branchName}"
     			    }
     			}
-            },
-       stage 'Release': {
+            ,
+       stage 'Release' {\
                 node(nodeName){
             	    stage('Release'){
                         deleteDir()
@@ -41,7 +41,7 @@ nodeName = 'master'
                         ])
     			    }
     			}
-            }
+            
         
     initGradle = 'jenkins-ws-init-gradle'
     nexusCreds = 'nexus-login'

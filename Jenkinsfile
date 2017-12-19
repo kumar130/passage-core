@@ -18,7 +18,7 @@ nodeName = 'master'
                         echo "Working off branch: ${branchName}"
     			    }
     			}
-            ,
+            
        stage 'Release' {\
                 node(nodeName){
             	    stage('Release'){

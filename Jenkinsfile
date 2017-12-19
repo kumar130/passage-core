@@ -5,10 +5,10 @@ String gitCredentials = 'jenkins-ssh'
 String stashName = 'sources'
 String branchName = ''
 
-    pipelineName = 'passage-core'
-    nodeName = 'ValidSlave'
-    pipelineStages = [ 
-            'Checkout': {
+node('master'){
+nodeName = 'master'
+     
+      stage 'Checkout': {
                 node(nodeName){
             	    stage('Checkout'){
                         checkOut( gitCredentials: gitCredentials)
@@ -19,7 +19,7 @@ String branchName = ''
     			    }
     			}
             },
-            'Release': {
+       stage 'Release': {
                 node(nodeName){
             	    stage('Release'){
                         deleteDir()
@@ -42,6 +42,7 @@ String branchName = ''
     			    }
     			}
             }
-        ]
+        
     initGradle = 'jenkins-ws-init-gradle'
     nexusCreds = 'nexus-login'
+}

@@ -19,7 +19,7 @@ nodeName = 'master'
     			    }
     			}
             
-       stage 'Release' {\
+       stage 'Release' {
                 node(nodeName){
             	    stage('Release'){
                         deleteDir()
@@ -45,4 +45,5 @@ nodeName = 'master'
         
     initGradle = 'jenkins-ws-init-gradle'
     nexusCreds = 'nexus-login'
+}
 }

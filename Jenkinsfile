@@ -5,7 +5,6 @@ String gitCredentials = 'jenkins-ssh'
 String stashName = 'sources'
 String branchName = ''
 
-springbootMSvc{
     pipelineName = 'passage-core'
     nodeName = 'ValidSlave'
     pipelineStages = [ 
@@ -46,4 +45,3 @@ springbootMSvc{
         ]
     initGradle = 'jenkins-ws-init-gradle'
     nexusCreds = 'nexus-login'
-}
